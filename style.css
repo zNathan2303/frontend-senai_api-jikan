@@ -120,10 +120,68 @@ menu .sub-menu {
 
 main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: tomato;
     flex-grow: 1;
+}
+
+section {
+    max-width: 100%;
+}
+
+section:nth-child(1) {
+    margin-top: 40px;
+    max-width: 100%;
+}
+
+section:nth-child(2) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    max-width: 100%;
+}
+
+h2 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    justify-self: center;
+}
+
+.cards {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 10px 10px;
+    justify-self: center;
+    max-width: 80%;
+    overflow-x: scroll;
+    padding-bottom: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: #FAFAFA;
+    box-shadow: var(--default-shadow);
+    border-radius: 4px;
+}
+
+.card img {
+    object-fit: contain;
+    align-self: center;
+    width: 170px;
+    height: 230px;
+    padding: 5px;
+}
+
+.card p {
+    max-width: 170px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    max-height: 40px;
+    overflow: hidden;
+    font-size: 12px;
 }
 
 footer {
