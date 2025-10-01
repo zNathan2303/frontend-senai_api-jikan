@@ -3,28 +3,29 @@
 document.getElementById('menu-hamburguer').addEventListener('click', () => {
     document.getElementById('menu-hamburguer').classList.toggle('ativo')
     document.querySelector('menu').classList.toggle('ativo')
+    document.querySelector('body').classList.toggle('menu-ativo')
 })
 
 async function obterConteudo(url) {
     const response = await fetch(url)
     const data = await response.json()
-    return data.data
+    return data
 }
 
-async function criarCards(secao, dados) {
+async function criarCards(secao, data) {
     const section = document.getElementById(secao)
 
     const cards = document.createElement('div')
     cards.className = 'cards'
 
-    for (let i = 0; i < dados.length; i++) {
+    for (let i = 0; i < data.data.length; i++) {
         const card = document.createElement('div')
         const imagem = document.createElement('img')
         const titulo = document.createElement('p')
 
         card.className = 'card'
-        imagem.src = dados[i].images.jpg.image_url
-        titulo.textContent = dados[i].title
+        imagem.src = data.data[i].images.jpg.image_url
+        titulo.textContent = data.data[i].title
 
         card.append(imagem, titulo)
         cards.append(card)
