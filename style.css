@@ -114,7 +114,6 @@ menu .categoria {
 
 menu .titulo {
     font-size: 2.5rem;
-    opacity: 100%;
 }
 
 menu .sub-menu {
@@ -202,4 +201,54 @@ footer {
     background-color: #1B263B;
     height: 50px;
     color: var(--primary-font-color);
+}
+
+@media (min-width: 768px) {
+    header {
+        padding: 0 30px;
+        height: 70px;
+    }
+
+    .logo .titulo {
+        font-size: 1.5rem;
+    }
+
+    menu .categoria {
+        font-size: 2rem;
+    }
+
+    menu .titulo {
+        font-size: 4rem;
+    }
+
+    menu .sub-menu {
+        gap: 15px;
+    }
+
+    menu .sub-menu a {
+        padding: 7px 40px;
+    }
+
+    h2 {
+        font-size: 2rem;
+        justify-self: auto;
+        padding-left: 8%;
+    }
+
+    .cards {
+        gap: 30px;
+        padding: 10px 10px;
+        max-width: 90%;
+        padding-bottom: 20px;
+    }
+
+    .card img {
+        width: 190px;
+        height: 269px;
+    }
+
+    .card p {
+        max-width: 190px;
+        font-size: 14px;
+    }
 }
