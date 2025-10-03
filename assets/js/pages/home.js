@@ -1,16 +1,9 @@
 'use strict'
 
-document.getElementById('menu-hamburguer').addEventListener('click', () => {
-    document.getElementById('menu-hamburguer').classList.toggle('ativo')
-    document.querySelector('menu').classList.toggle('ativo')
-    document.querySelector('body').classList.toggle('menu-ativo')
-})
+import { iniciarMenu } from '../components/menu.js'
+import { obterConteudo } from '../services/api.js'
 
-async function obterConteudo(url) {
-    const response = await fetch(url)
-    const data = await response.json()
-    return data
-}
+iniciarMenu()
 
 async function criarCards(secao, data) {
     const section = document.getElementById(secao)
