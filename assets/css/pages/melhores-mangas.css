@@ -75,7 +75,7 @@ h2 span {
     height: 136px;
 }
 
-.titulo {
+.card .titulo {
     text-align: center;
     position: relative;
     bottom: 10px;
@@ -86,3 +86,51 @@ h2 span {
     max-height: 96px;
     overflow: hidden;
 }
+
+@media (min-width: 768px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .cards {
+        justify-content: space-between;
+        flex-direction: row;
+        max-width: 544px;
+        flex-wrap: wrap;
+        gap: 50px;
+    }
+
+    .card {
+        width: 232px;
+        height: 370px;
+        flex-wrap: nowrap;
+    }
+
+    .avaliacao {
+        order: 1;
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .score .icon {
+        top: 4px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .capa {
+        margin: 0;
+        order: 2;
+        width: 191px;
+        height: 270px;
+    }
+
+    .card .titulo {
+        order: 3;
+        bottom: 0;
+        max-height: 48px;
+        max-width: max-content;
+    }
+}
+
+@media (min-width: 1024px) {}

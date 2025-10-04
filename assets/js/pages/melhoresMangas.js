@@ -54,12 +54,11 @@ async function criarCards(data) {
 }
 
 async function exibirConteudo(pagina) {
+    const botao = document.getElementById('button-more')
+    botao.dataset.pagina = pagina
+
     const data = await obterConteudo(`https://api.jikan.moe/v4/top/manga?limit=10&page=${pagina}`)
     criarCards(data.data)
-
-    const botao = document.getElementById('button-more')
-
-    botao.dataset.pagina = pagina
 
     if (data.pagination.has_next_page)
         botao.classList.add('habilitado')
