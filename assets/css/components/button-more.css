@@ -1,0 +1,50 @@
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F5F5F5;
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    box-shadow: 0px 0px 8px 4px rgba(207, 216, 220, 0.5);
+    margin: 40px;
+    transition: 0.3s;
+}
+
+.button .left,
+.button .right {
+    background-color: #B0BEC5;
+    width: 25px;
+    height: 5.5px;
+    transition: 0.3s;
+}
+
+.button .left {
+    position: relative;
+    left: 6px;
+    rotate: 45deg;
+}
+
+.button .right {
+    position: relative;
+    right: 6px;
+    rotate: -45deg;
+}
+
+.button.habilitado {
+    cursor: pointer;
+}
+
+.button.habilitado .left,
+.button.habilitado .right {
+    background-color: #3949AB;
+}
+
+.button.habilitado:hover {
+    background-color: #3949AB;
+}
+
+.button.habilitado:hover .left,
+.button.habilitado:hover .right {
+    background-color: #FFFFFF;
+}

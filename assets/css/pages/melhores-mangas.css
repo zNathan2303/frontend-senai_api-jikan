@@ -1,0 +1,88 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+h2 {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 400;
+    padding: 10px 0;
+}
+
+h2 span {
+    color: #1A237E;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 270px;
+    height: 150px;
+    box-shadow: var(--default-shadow);
+    font-size: 14px;
+    flex-wrap: wrap;
+    border-radius: 6px;
+}
+
+.avaliacao {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 62%;
+    max-height: min-content;
+}
+
+.rank {
+    font-weight: 500;
+}
+
+.rank span {
+    color: #1A237E;
+}
+
+.score {
+    display: flex;
+    justify-content: space-between;
+}
+
+.score .icon {
+    position: relative;
+    top: 3px;
+    right: 1px;
+    width: 13px;
+    height: 13px;
+}
+
+.score .nota {
+    font-weight: 500;
+}
+
+.capa {
+    margin: auto;
+    margin-left: 6px;
+    width: 96px;
+    height: 136px;
+}
+
+.titulo {
+    text-align: center;
+    position: relative;
+    bottom: 10px;
+    font-size: 1rem;
+    display: flex;
+    margin: auto 0;
+    max-width: 130px;
+    max-height: 96px;
+    overflow: hidden;
+}

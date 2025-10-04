@@ -17,9 +17,10 @@
     <link rel="stylesheet" href="./assets/css/global/default.css">
     <link rel="stylesheet" href="./assets/css/components/header.css">
     <link rel="stylesheet" href="./assets/css/components/footer.css">
-    <link rel="stylesheet" href="./assets/css/pages/home.css">
-    <script src="./assets/js/pages/home.js" type="module" defer></script>
-    <title>YourAnimeList</title>
+    <link rel="stylesheet" href="./assets/css/pages/melhores-mangas.css">
+    <link rel="stylesheet" href="./assets/css/components/button-more.css">
+    <script src="./assets/js/pages/melhoresMangas.js" type="module" defer></script>
+    <title>YourAnimeList - Melhores Mangás</title>
 </head>
 
 <body>
@@ -55,12 +56,12 @@
         </menu>
     </header>
     <main>
-        <section id="animes-temporada-atual">
-            <h2>Animes da temporada atual</h2>
-        </section>
-        <section id="animes-proxima-temporada">
-            <h2>Animes da próxima temporada</h2>
-        </section>
+        <h2>Melhores <span>mangás</span> avaliados pela comunidade!</h2>
+        <div class="cards" id="cards"></div>
+        <div class="button" id="button-more">
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
     </main>
     <footer>
         <p>Nathan da Silva Costa © 2025</p>

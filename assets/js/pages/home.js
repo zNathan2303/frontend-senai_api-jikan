@@ -1,7 +1,7 @@
 'use strict'
 
 import { iniciarMenu } from '../components/menu.js'
-import { obterConteudo } from '../services/api.js'
+import { obterConteudo } from '../utils/fetchData.js'
 
 iniciarMenu()
 
