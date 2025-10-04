@@ -6,21 +6,28 @@ import { ordenarPorRankCrescente } from '../utils/sort.js'
 
 iniciarMenu()
 
-async function criarCards(data, pagina) {
-    const mangas = data.sort(ordenarPorRankCrescente)
+async function criarCards(data) {
+    const animes = data.sort(ordenarPorRankCrescente)
 
     const cards = document.getElementById('cards')
 
+    const temporadas = {
+        winter: "Inverno",
+        spring: "Primavera",
+        summer: "Verão",
+        fall: "Outono"
+    }
+
     const quantidadeDeCards = cards.children.length
 
-    for (let i = 0; i < mangas.length; i++) {
-        const manga = mangas[i];
+    for (let i = 0; i < animes.length; i++) {
+        const anime = animes[i]
         const card = document.createElement('div')
         card.className = 'card'
 
         const imagem = document.createElement('img')
         imagem.className = 'capa'
-        imagem.src = manga.images.jpg.image_url
+        imagem.src = anime.images.jpg.image_url
 
         const avaliacao = document.createElement('div')
         avaliacao.className = 'avaliacao'
@@ -44,17 +51,17 @@ async function criarCards(data, pagina) {
 
         const nota = document.createElement('p')
         nota.className = 'nota'
-        nota.textContent = manga.score
+        nota.textContent = anime.score
 
         const titulo = document.createElement('p')
         titulo.className = 'titulo'
-        titulo.textContent = manga.title
+        titulo.textContent = anime.title
 
         const info = document.createElement('div')
         info.className = 'info'
 
         const membros = document.createElement('span')
-        membros.textContent = manga.members.toLocaleString('pt-BR')
+        membros.textContent = anime.members.toLocaleString('pt-BR')
 
         const membrosText = document.createElement('p')
         membrosText.append('Salvo por ')
@@ -62,30 +69,23 @@ async function criarCards(data, pagina) {
         membrosText.append(' pessoas')
 
         const favoritos = document.createElement('span')
-        favoritos.textContent = manga.favorites.toLocaleString('pt-BR')
+        favoritos.textContent = anime.favorites.toLocaleString('pt-BR')
 
         const favoritosText = document.createElement('p')
         favoritosText.append(favoritos)
         favoritosText.append(' pessoas favoritaram')
 
-        const publicacao = document.createElement('p')
-        const diaInicio = manga.published.prop.from.day
-        const mesInicio = manga.published.prop.from.month
-        const anoInicio = manga.published.prop.from.year
+        const lancamento = document.createElement('p')
 
-        const diaFim = manga.published.prop.to.day
-        const mesFim = manga.published.prop.to.month
-        const anoFim = manga.published.prop.to.year
-
-        if (anoFim)
-            publicacao.textContent = `${diaInicio}/${mesInicio}/${anoInicio} - ${diaFim}/${mesFim}/${anoFim}`
+        if (anime.year)
+            lancamento.textContent = `Lançamento: ${temporadas[anime.season]} de ${anime.year}`
         else
-            publicacao.textContent = `${diaInicio}/${mesInicio}/${anoInicio} - atualmente`
+            lancamento.textContent = `Lançamento: Indisponível`
 
         score.append(icon, nota)
         rankText.append(rank)
         avaliacao.append(rankText, score)
-        info.append(membrosText, favoritosText, publicacao)
+        info.append(membrosText, favoritosText, lancamento)
         card.append(imagem, avaliacao, titulo, info)
 
         cards.append(card)
@@ -96,8 +96,8 @@ async function exibirConteudo(pagina) {
     const botao = document.getElementById('button-more')
     botao.dataset.pagina = pagina
 
-    const data = await obterConteudo(`https://api.jikan.moe/v4/top/manga?limit=10&page=${pagina}`)
-    criarCards(data.data, pagina)
+    const data = await obterConteudo(`https://api.jikan.moe/v4/top/anime?sfw&limit=10&page=${pagina}`)
+    criarCards(data.data)
 
     if (data.pagination.has_next_page)
         botao.classList.add('habilitado')
