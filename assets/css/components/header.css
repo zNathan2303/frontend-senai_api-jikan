@@ -195,6 +195,7 @@ menu .sub-menu a {
         border-radius: 7%;
         transition: 0.3s;
         padding-bottom: 20px;
+        z-index: 1;
     }
 
     .sub-menu .linha {

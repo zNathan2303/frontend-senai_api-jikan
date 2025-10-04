@@ -8,7 +8,7 @@
     border-radius: 100px;
     box-shadow: 0px 0px 8px 4px rgba(207, 216, 220, 0.5);
     margin: 40px;
-    transition: 0.3s;
+    transition: 0.4s;
 }
 
 .button .left,
@@ -47,4 +47,9 @@
 .button.habilitado:hover .left,
 .button.habilitado:hover .right {
     background-color: #FFFFFF;
+}
+
+.button.habilitado:active {
+    transform: scale(0.80);
+    background-color: #283593;
 }

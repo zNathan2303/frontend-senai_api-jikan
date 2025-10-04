@@ -44,10 +44,43 @@ async function criarCards(data) {
         titulo.className = 'titulo'
         titulo.textContent = manga.title
 
+        const info = document.createElement('div')
+        info.className = 'info'
+
+        const membros = document.createElement('span')
+        membros.textContent = manga.members.toLocaleString('pt-BR')
+
+        const membrosText = document.createElement('p')
+        membrosText.append('Salvo por ')
+        membrosText.append(membros)
+        membrosText.append(' pessoas')
+
+        const favoritos = document.createElement('span')
+        favoritos.textContent = manga.favorites.toLocaleString('pt-BR')
+
+        const favoritosText = document.createElement('p')
+        favoritosText.append(favoritos)
+        favoritosText.append(' pessoas favoritaram')
+
+        const publicacao = document.createElement('p')
+        const diaInicio = manga.published.prop.from.day
+        const mesInicio = manga.published.prop.from.month
+        const anoInicio = manga.published.prop.from.year
+
+        const diaFim = manga.published.prop.to.day
+        const mesFim = manga.published.prop.to.month
+        const anoFim = manga.published.prop.to.year
+
+        if (anoFim)
+            publicacao.textContent = `${diaInicio}/${mesInicio}/${anoInicio} - ${diaFim}/${mesFim}/${anoFim}`
+        else
+            publicacao.textContent = `${diaInicio}/${mesInicio}/${anoInicio} - atualmente`
+
         score.append(icon, nota)
         rankText.append(rank)
         avaliacao.append(rankText, score)
-        card.append(imagem, avaliacao, titulo)
+        info.append(membrosText, favoritosText, publicacao)
+        card.append(imagem, avaliacao, titulo, info)
 
         cards.append(card)
     })

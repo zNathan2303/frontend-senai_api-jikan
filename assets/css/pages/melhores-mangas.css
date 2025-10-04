@@ -73,6 +73,7 @@ h2 span {
     margin-left: 6px;
     width: 96px;
     height: 136px;
+    object-fit: cover;
 }
 
 .card .titulo {
@@ -90,6 +91,7 @@ h2 span {
 @media (min-width: 768px) {
     h2 {
         font-size: 1.5rem;
+        padding: 25px 0;
     }
 
     .cards {
@@ -131,6 +133,77 @@ h2 span {
         max-height: 48px;
         max-width: max-content;
     }
+
+    .card .info {
+        display: none;
+    }
 }
 
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+    h2 {
+        font-size: 2rem;
+        padding-top: 40px;
+        padding-bottom: 25px;
+    }
+
+    .cards {
+        justify-content: space-between;
+        flex-direction: row;
+        max-width: 940px;
+        flex-wrap: wrap;
+        gap: 50px;
+    }
+
+    .card {
+        width: 443px;
+        height: 280px;
+        flex-wrap: wrap;
+        justify-content: start;
+    }
+
+    .avaliacao {
+        order: 2;
+        width: 55%;
+        font-size: 20px;
+    }
+
+    .score .icon {
+        top: 4px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .capa {
+        order: 1;
+        width: 191px;
+        height: 270px;
+        margin: auto;
+        margin-left: 6px;
+    }
+
+    .card .titulo {
+        order: 3;
+        bottom: 0;
+        max-height: 97px;
+        max-width: 55%;
+        font-size: 1.4rem;
+    }
+
+    .card .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        order: 4;
+        margin: auto 0;
+    }
+
+    .card .info p {
+        font-size: 14px;
+    }
+
+    .card .info span {
+        color: #1A237E;
+        font-weight: 500;
+    }
+}
