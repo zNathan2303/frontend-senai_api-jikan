@@ -1,0 +1,106 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+h1 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: var(--default-shadow);
+    padding: 15px;
+    gap: 16px;
+    border-radius: 10px;
+}
+
+.container img {
+    width: 120px;
+    height: 171px;
+    box-shadow: var(--default-shadow);
+    object-fit: cover;
+}
+
+.popularidade {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 5px 10px;
+    box-shadow: var(--default-shadow);
+    background-color: #F3F3F3;
+    flex-grow: 1;
+    border-radius: 10px;
+}
+
+.popularidade>p {
+    margin-left: 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.popularidade>p span {
+    font-weight: 600;
+    color: #1A237E;
+}
+
+.popularidade .nota {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #F5F5F5;
+    background-color: #6E7BFF;
+    border-radius: 5px;
+    height: 60px;
+    box-shadow: var(--default-shadow);
+}
+
+.popularidade .nota p:nth-child(1) {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.popularidade .nota p:nth-child(2) {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.informacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+h2 {
+    border-bottom: 1px solid #AEAEAE;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.informacoes p {
+    font-weight: 600;
+}
+
+.informacoes p span {
+    font-weight: 400;
+}
+
+.informacoes a {
+    color: #1A237E;
+    font-weight: 600;
+}
+
+.sinopse p {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 1024px) {}

@@ -6,7 +6,7 @@ import { ordenarPorRankCrescente } from '../utils/sort.js'
 
 iniciarMenu()
 
-async function criarCards(data, pagina) {
+async function criarCards(data) {
     const mangas = data.sort(ordenarPorRankCrescente)
 
     const cards = document.getElementById('cards')
@@ -97,7 +97,7 @@ async function exibirConteudo(pagina) {
     botao.dataset.pagina = pagina
 
     const data = await obterConteudo(`https://api.jikan.moe/v4/top/manga?limit=10&page=${pagina}`)
-    criarCards(data.data, pagina)
+    criarCards(data.data)
 
     if (data.pagination.has_next_page)
         botao.classList.add('habilitado')
