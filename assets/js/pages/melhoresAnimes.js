@@ -3,7 +3,9 @@
 import { iniciarMenu } from '../components/menu.js'
 import { obterConteudo } from '../utils/fetchData.js'
 import { ordenarPorRankCrescente } from '../utils/sort.js'
+import { criarHeader } from '../components/header.js'
 
+criarHeader()
 iniciarMenu()
 
 async function criarCards(data) {

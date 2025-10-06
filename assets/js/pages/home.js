@@ -2,7 +2,9 @@
 
 import { iniciarMenu } from '../components/menu.js'
 import { obterConteudo } from '../utils/fetchData.js'
+import { criarHeader } from '../components/header.js'
 
+criarHeader()
 iniciarMenu()
 
 async function criarCards(secao, data) {
