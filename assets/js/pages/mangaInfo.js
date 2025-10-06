@@ -36,22 +36,45 @@ function criarManga(manga) {
 
     notaContainer.append(notaText, nota)
 
+    const votosText = document.createElement('p')
+    const votos = document.createElement('span')
+    votos.textContent = manga.scored_by.toLocaleString('pt-BR')
+    votosText.append(votos, ' votos')
+
     const rankText = document.createElement('p')
     const rank = document.createElement('span')
-    rank.textContent = manga.rank
-    rankText.append('Rank #', rank)
+    rank.textContent = '#' + manga.rank
+    rankText.append('Rank ', rank)
 
     const popularidadeText = document.createElement('p')
     const popularidade = document.createElement('span')
-    popularidade.textContent = manga.popularity
-    popularidadeText.append('Popularidade #', popularidade)
+    popularidade.textContent = '#' + manga.popularity
+    popularidadeText.append('Popularidade ', popularidade)
 
     const membrosText = document.createElement('p')
     const membros = document.createElement('span')
     membros.textContent = manga.members.toLocaleString('pt-BR')
     membrosText.append(membros, ' membros')
 
-    popularidadeContainer.append(notaContainer, rankText, popularidadeText, membrosText)
+    popularidadeContainer.append(notaContainer, votosText, rankText, popularidadeText, membrosText)
+
+    const titulosContainer = document.createElement('div')
+    titulosContainer.className = 'titulos'
+
+    const titulos = document.createElement('h2')
+    titulos.textContent = 'Títulos alternativos'
+
+    const tituloInglesText = document.createElement('p')
+    const tituloIngles = document.createElement('span')
+    tituloIngles.textContent = manga.title_english
+    tituloInglesText.append('Inglês: ', tituloIngles)
+
+    const tituloJaponesText = document.createElement('p')
+    const tituloJapones = document.createElement('span')
+    tituloJapones.textContent = manga.title_japanese
+    tituloJaponesText.append('Japonês: ', tituloJapones)
+
+    titulosContainer.append(titulos, tituloInglesText, tituloJaponesText)
 
     const informacoesContainer = document.createElement('div')
     informacoesContainer.className = 'informacoes'
@@ -146,7 +169,18 @@ function criarManga(manga) {
 
     sinopseContainer.append(sinopse, sinopseContent)
 
-    container.append(capa, popularidadeContainer, informacoesContainer, sinopseContainer)
+    const informacoesAdicionaisContainer = document.createElement('div')
+    informacoesAdicionaisContainer.className = 'informacoes-adicionais'
+
+    const informacoesAdicionais = document.createElement('h2')
+    informacoesAdicionais.textContent = 'Informações adicionais'
+
+    const informacoesAdicionaisContent = document.createElement('p')
+    informacoesAdicionaisContent.textContent = manga.background
+
+    informacoesAdicionaisContainer.append(informacoesAdicionais, informacoesAdicionaisContent)
+
+    container.append(capa, popularidadeContainer, titulosContainer, informacoesContainer, sinopseContainer, informacoesAdicionaisContainer)
 }
 
 async function exibirConteudo(id) {

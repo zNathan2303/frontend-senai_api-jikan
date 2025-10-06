@@ -101,6 +101,146 @@ h2 {
     font-size: 14px;
 }
 
-@media (min-width: 768px) {}
+.titulos {
+    display: none;
+}
+
+.informacoes-adicionais {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        margin-top: 30px;
+        margin-bottom: 25px;
+        font-size: 2rem;
+    }
+
+    .container {
+        max-width: 644px;
+        display: grid;
+        padding: 25px;
+        gap: 35px;
+        margin-bottom: 27px;
+        border-radius: 10px;
+        grid-template-areas:
+            "imagem popularidade"
+            "titulos sinopse"
+            "informacoes sinopse"
+            "informacoes-adicionais informacoes-adicionais";
+        grid-template-rows: 384px repeat(3, auto);
+    }
+
+    .container img {
+        width: 270px;
+        height: auto;
+        grid-area: imagem;
+    }
+
+    .popularidade {
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        padding: 40px;
+        grid-area: popularidade;
+    }
+
+    .popularidade>p {
+        margin-left: 5px;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .popularidade>p:nth-child(2) {
+        font-size: 14px;
+    }
+
+    .popularidade>p:nth-child(3),
+    .popularidade>p:nth-child(4),
+    .popularidade>p:nth-child(5) {
+        padding-top: 30px;
+    }
+
+    .popularidade>p span {
+        font-weight: 600;
+    }
+
+    .popularidade .nota {
+        width: 155px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: auto;
+        padding: 8px;
+    }
+
+    .popularidade .nota p:nth-child(1) {
+        font-size: 26px;
+        font-weight: 500;
+    }
+
+    .popularidade .nota p:nth-child(2) {
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .titulos {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 270px;
+        max-height: 110px;
+        grid-area: titulos;
+    }
+
+    .titulos p {
+        font-weight: 600;
+    }
+
+    .titulos p span {
+        font-weight: 400;
+    }
+
+    .informacoes {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 270px;
+        grid-area: informacoes;
+    }
+
+    h2 {
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    .informacoes p {
+        font-weight: 600;
+    }
+
+    .informacoes p span {
+        font-weight: 400;
+    }
+
+    .informacoes a {
+        color: #1A237E;
+        font-weight: 600;
+    }
+
+    .sinopse {
+        width: 270px;
+        grid-area: sinopse;
+    }
+
+    .informacoes-adicionais {
+        display: block;
+        grid-area: informacoes-adicionais;
+    }
+
+    .informacoes-adicionais p {
+        font-size: 14px;
+    }
+}
 
 @media (min-width: 1024px) {}
