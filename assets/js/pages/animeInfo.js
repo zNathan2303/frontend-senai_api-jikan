@@ -5,15 +5,16 @@ import { obterConteudo } from '../utils/fetchData.js'
 
 iniciarMenu()
 
-const traducaoStatus = {
-    "Finished": "Finalizado",
-    "Publishing": "Em publicação",
-    "On Hiatus": "Em hiato",
-    "Discontinued": "Descontinuado",
-    "Not yet published": "Ainda não publicado"
-}
-
 function criarAnime(anime) {
+
+    const statusTraducao = {
+        "Currently Airing": "Em exibição",
+        "Finished Airing": "Finalizado",
+        "Not yet aired": "Ainda não exibido",
+        "On Hiatus": "Em hiato",
+        "Cancelled": "Cancelado"
+    }
+
     const tituloAnime = document.getElementById('anime-titulo')
     tituloAnime.textContent = anime.title
 
@@ -103,7 +104,12 @@ function criarAnime(anime) {
     const duracaoText = document.createElement('p')
     const duracao = document.createElement('span')
     duracao.textContent = anime.duration
-    duracaoText.append('Status: ', duracao)
+    duracaoText.append('Duração: ', duracao)
+
+    const statusText = document.createElement('p')
+    const status = document.createElement('span')
+    status.textContent = statusTraducao[anime.status] || anime.status
+    statusText.append('Status: ', status)
 
     const lancamentoText = document.createElement('p')
     const lancamento = document.createElement('span')
@@ -151,7 +157,7 @@ function criarAnime(anime) {
     linkMyAnimeList.textContent = 'MyAnimeList'
     linkMyAnimeList.href = anime.url
 
-    informacoesContainer.append(informacoes, tipoText, fonteText, episodiosText, duracaoText,
+    informacoesContainer.append(informacoes, tipoText, fonteText, episodiosText, duracaoText, statusText,
         lancamentoText, generosText, temasText, publicoAlvoText, estudioText, linkMyAnimeList)
 
     const sinopseContainer = document.createElement('div')
