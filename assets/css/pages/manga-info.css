@@ -50,6 +50,10 @@ h1 {
     color: #1A237E;
 }
 
+.popularidade p:nth-child(2) {
+    display: none;
+}
+
 .popularidade .nota {
     display: flex;
     justify-content: space-evenly;
@@ -155,9 +159,9 @@ h2 {
         font-size: 14px;
     }
 
-    .popularidade>p:nth-child(3),
     .popularidade>p:nth-child(4),
-    .popularidade>p:nth-child(5) {
+    .popularidade>p:nth-child(5),
+    .popularidade>p:nth-child(6) {
         padding-top: 30px;
     }
 
@@ -183,6 +187,7 @@ h2 {
     .popularidade .nota p:nth-child(2) {
         font-size: 32px;
         font-weight: 700;
+        display: block;
     }
 
     .titulos {
@@ -243,4 +248,152 @@ h2 {
     }
 }
 
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+    h1 {
+        margin-top: 30px;
+        margin-bottom: 25px;
+        font-size: 2rem;
+    }
+
+    .container {
+        max-width: 960px;
+        padding: 30px;
+        gap: 30px;
+        margin-bottom: 22px;
+        border-radius: 10px;
+        grid-template-areas:
+            "imagem linha-divisoria-container popularidade"
+            "imagem linha-divisoria-container sinopse"
+            "titulos linha-divisoria-container sinopse"
+            "informacoes linha-divisoria-container informacoes-adicionais";
+        grid-template-rows: auto;
+        grid-template-columns: 250px 1px 1fr;
+        align-items: start;
+    }
+
+    .container img {
+        width: 250px;
+    }
+
+    .popularidade {
+        display: grid;
+        grid-template-areas:
+            "nota linha-divisoria-popularidade rank popularidadeValue members"
+            "votos linha-divisoria-popularidade rank popularidadeValue members";
+        grid-template-columns: 129px 1px repeat(3, auto);
+        grid-template-rows: 86px 10px;
+        padding: 12px;
+        gap: 15px;
+        height: min-content;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .popularidade>p {
+        font-size: 1rem;
+        margin: 0;
+    }
+
+    .popularidade>p:nth-child(4),
+    .popularidade>p:nth-child(5),
+    .popularidade>p:nth-child(6) {
+        padding-top: 0;
+    }
+
+    .popularidade .nota {
+        grid-area: nota;
+        width: 129px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        height: auto;
+        padding: 0;
+    }
+
+    .popularidade p:nth-child(2) {
+        grid-area: votos;
+    }
+
+    .popularidade p:nth-child(3) {
+        grid-area: linha-divisoria-popularidade;
+        font-size: 14px;
+    }
+
+    .popularidade p:nth-child(4) {
+        grid-area: rank;
+    }
+
+    .popularidade p:nth-child(5) {
+        grid-area: popularidadeValue;
+    }
+
+    .popularidade p:nth-child(6) {
+        grid-area: members;
+    }
+
+    .titulos {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+        max-height: 110px;
+        grid-area: titulos;
+    }
+
+    .informacoes {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+        grid-area: informacoes;
+    }
+
+    h2 {
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    .informacoes p {
+        font-weight: 600;
+    }
+
+    .informacoes p span {
+        font-weight: 400;
+    }
+
+    .informacoes a {
+        color: #1A237E;
+        font-weight: 600;
+    }
+
+    .sinopse {
+        width: 100%;
+        grid-area: sinopse;
+    }
+
+    .sinopse p,
+    .informacoes-adicionais p {
+        font-size: 1rem;
+    }
+
+    .informacoes-adicionais {
+        display: block;
+        grid-area: informacoes-adicionais;
+    }
+
+    .linha-divisoria-container {
+        width: 1px;
+        height: 100%;
+        grid-area: linha-divisoria-container;
+        background-color: #AEAEAE;
+    }
+
+    .linha-divisoria-popularidade {
+        width: 1px;
+        height: 85%;
+        grid-area: linha-divisoria-popularidade;
+        background-color: #AEAEAE;
+        margin: 0 22px;
+    }
+}

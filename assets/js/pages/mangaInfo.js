@@ -56,7 +56,10 @@ function criarManga(manga) {
     membros.textContent = manga.members.toLocaleString('pt-BR')
     membrosText.append(membros, ' membros')
 
-    popularidadeContainer.append(notaContainer, votosText, rankText, popularidadeText, membrosText)
+    const linhaDivisoriaPopularidade = document.createElement('div')
+    linhaDivisoriaPopularidade.className = 'linha-divisoria-popularidade'
+
+    popularidadeContainer.append(notaContainer, votosText, linhaDivisoriaPopularidade, rankText, popularidadeText, membrosText)
 
     const titulosContainer = document.createElement('div')
     titulosContainer.className = 'titulos'
@@ -180,7 +183,10 @@ function criarManga(manga) {
 
     informacoesAdicionaisContainer.append(informacoesAdicionais, informacoesAdicionaisContent)
 
-    container.append(capa, popularidadeContainer, titulosContainer, informacoesContainer, sinopseContainer, informacoesAdicionaisContainer)
+    const linhaDivisoriaContainer = document.createElement('div')
+    linhaDivisoriaContainer.className = 'linha-divisoria-container'
+
+    container.append(capa, linhaDivisoriaContainer, popularidadeContainer, titulosContainer, informacoesContainer, sinopseContainer, informacoesAdicionaisContainer)
 }
 
 async function exibirConteudo(id) {
