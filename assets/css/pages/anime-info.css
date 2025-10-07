@@ -10,6 +10,7 @@ h1 {
     margin-bottom: 5px;
     font-size: 24px;
     font-weight: 400;
+    text-align: center;
 }
 
 .container {
@@ -267,6 +268,7 @@ h2 {
             "imagem linha-divisoria-container sinopse"
             "titulos linha-divisoria-container sinopse"
             "titulos linha-divisoria-container sinopse"
+            ". linha-divisoria-container ."
             "informacoes linha-divisoria-container informacoes-adicionais";
         grid-template-rows: auto;
         grid-template-columns: 250px 1px 1fr;
@@ -300,6 +302,7 @@ h2 {
     .popularidade>p:nth-child(5),
     .popularidade>p:nth-child(6) {
         padding-top: 0;
+        text-align: center;
     }
 
     .popularidade .nota {

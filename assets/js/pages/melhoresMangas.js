@@ -4,11 +4,12 @@ import { iniciarMenu } from '../components/menu.js'
 import { obterConteudo } from '../utils/fetchData.js'
 import { ordenarPorRankCrescente } from '../utils/sort.js'
 import { criarHeader } from '../components/header.js'
+import { mostrarMaisInformacoesAnime, mostrarMaisInformacoesManga } from "../utils/mostrarMaisInformacoes.js"
 
 criarHeader()
 iniciarMenu()
 
-async function criarCards(data) {
+function criarCards(data) {
     const mangas = data.sort(ordenarPorRankCrescente)
 
     const cards = document.getElementById('cards')
@@ -16,9 +17,12 @@ async function criarCards(data) {
     const quantidadeDeCards = cards.children.length
 
     for (let i = 0; i < mangas.length; i++) {
-        const manga = mangas[i];
+        const manga = mangas[i]
         const card = document.createElement('div')
         card.className = 'card'
+        card.addEventListener('click', () => {
+            mostrarMaisInformacoesManga(manga.mal_id)
+        })
 
         const imagem = document.createElement('img')
         imagem.className = 'capa'

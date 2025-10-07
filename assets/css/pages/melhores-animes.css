@@ -163,6 +163,7 @@ h2 span {
         height: 280px;
         flex-wrap: wrap;
         justify-content: start;
+        cursor: pointer;
     }
 
     .avaliacao {

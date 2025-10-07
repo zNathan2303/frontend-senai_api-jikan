@@ -3,6 +3,7 @@
 import { iniciarMenu } from '../components/menu.js'
 import { obterConteudo } from '../utils/fetchData.js'
 import { criarHeader } from '../components/header.js'
+import { mostrarMaisInformacoesAnime } from "../utils/mostrarMaisInformacoes.js"
 
 criarHeader()
 iniciarMenu()
@@ -24,6 +25,10 @@ async function criarCards(secao, data) {
 
         card.append(imagem, titulo)
         cards.append(card)
+
+        card.addEventListener('click', () => {
+            mostrarMaisInformacoesAnime(data.data[i].mal_id)
+        })
     }
 
     section.append(cards)

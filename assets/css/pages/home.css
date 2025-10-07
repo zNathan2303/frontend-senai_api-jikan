@@ -95,6 +95,10 @@ h2 {
         max-width: 75%;
     }
 
+    .card {
+        cursor: pointer;
+    }
+
     .card img {
         width: 230px;
         height: 310px;

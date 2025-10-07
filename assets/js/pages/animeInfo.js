@@ -18,7 +18,10 @@ function criarAnime(anime) {
     }
 
     const tituloAnime = document.getElementById('anime-titulo')
-    tituloAnime.textContent = anime.title
+    if (anime.title)
+        tituloAnime.textContent = anime.title
+    else
+        tituloAnime.textContent = 'Título indisponível'
 
     const container = document.getElementById('container')
 
@@ -35,28 +38,44 @@ function criarAnime(anime) {
     notaText.textContent = 'Nota'
 
     const nota = document.createElement('p')
-    nota.textContent = anime.score
+    if (anime.score)
+        nota.textContent = anime.score
+    else
+        nota.textContent = '???'
 
     notaContainer.append(notaText, nota)
 
     const votosText = document.createElement('p')
     const votos = document.createElement('span')
-    votos.textContent = anime.scored_by.toLocaleString('pt-BR')
+    if (anime.scored_by)
+        votos.textContent = anime.scored_by.toLocaleString('pt-BR')
+    else
+        votos.textContent = '???'
+
     votosText.append(votos, ' votos')
 
     const rankText = document.createElement('p')
     const rank = document.createElement('span')
-    rank.textContent = '#' + anime.rank
+    if (anime.rank)
+        rank.textContent = '#' + anime.rank
+    else
+        rank.textContent = '???'
     rankText.append('Rank ', rank)
 
     const popularidadeText = document.createElement('p')
     const popularidade = document.createElement('span')
-    popularidade.textContent = '#' + anime.popularity
+    if (anime.popularity)
+        popularidade.textContent = '#' + anime.popularity
+    else
+        popularidade.textContent = '???'
     popularidadeText.append('Popularidade ', popularidade)
 
     const membrosText = document.createElement('p')
     const membros = document.createElement('span')
-    membros.textContent = anime.members.toLocaleString('pt-BR')
+    if (anime.members)
+        membros.textContent = anime.members.toLocaleString('pt-BR')
+    else
+        membros.textContent = '???'
     membrosText.append(membros, ' membros')
 
     const linhaDivisoriaPopularidade = document.createElement('div')
@@ -72,12 +91,18 @@ function criarAnime(anime) {
 
     const tituloInglesText = document.createElement('p')
     const tituloIngles = document.createElement('span')
-    tituloIngles.textContent = anime.title_english
+    if (anime.title_english)
+        tituloIngles.textContent = anime.title_english
+    else
+        tituloIngles.textContent = 'Desconhecido'
     tituloInglesText.append('Inglês: ', tituloIngles)
 
     const tituloJaponesText = document.createElement('p')
     const tituloJapones = document.createElement('span')
-    tituloJapones.textContent = anime.title_japanese
+    if (anime.title_japanese)
+        tituloJapones.textContent = anime.title_japanese
+    else
+        tituloJapones.textContent = 'Desconhecido'
     tituloJaponesText.append('Japonês: ', tituloJapones)
 
     titulosContainer.append(titulos, tituloInglesText, tituloJaponesText)
@@ -90,22 +115,36 @@ function criarAnime(anime) {
 
     const tipoText = document.createElement('p')
     const tipo = document.createElement('span')
-    tipo.textContent = anime.type
+    if (anime.type)
+        tipo.textContent = anime.type
+    else
+        tipo.textContent = 'Desconhecido'
     tipoText.append('Tipo: ', tipo)
 
     const fonteText = document.createElement('p')
     const fonte = document.createElement('span')
-    fonte.textContent = anime.source
+    if (anime.source)
+        fonte.textContent = anime.source
+    else
+        fonte.textContent = 'Desconhecido'
     fonteText.append('Fonte: ', fonte)
 
     const episodiosText = document.createElement('p')
     const episodios = document.createElement('span')
-    episodios.textContent = anime.episodes
+    if (anime.episodes)
+        episodios.textContent = anime.episodes
+    else
+        episodios.textContent = 'Desconhecido'
     episodiosText.append('Episódios: ', episodios)
 
     const duracaoText = document.createElement('p')
     const duracao = document.createElement('span')
-    duracao.textContent = anime.duration
+    if (anime.duration == 'Unknown')
+        duracao.textContent = 'Desconhecido'
+    else if (anime.duration)
+        duracao.textContent = anime.duration
+    else
+        duracao.textContent = 'Desconhecido'
     duracaoText.append('Duração: ', duracao)
 
     const statusText = document.createElement('p')
@@ -127,37 +166,51 @@ function criarAnime(anime) {
             const mesFim = anime.aired.prop.to.month
             lancamento.textContent = `${diaInicio}/${mesInicio}/${anoInicio} até ${diaFim}/${mesFim}/${anoFim}`
         } else {
-            lancamento.textContent = `${diaInicio}/${mesInicio}/${anoInicio} até o momento`
+            lancamento.textContent = `${diaInicio}/${mesInicio}/${anoInicio}`
         }
     } else {
-        lancamento.textContent = `Não iniciado`
+        lancamento.textContent = `Desconhecido`
     }
 
     lancamentoText.append('Lançamento: ', lancamento)
 
     const generosText = document.createElement('p')
     const generos = document.createElement('span')
-    generos.textContent = anime.genres.map(g => g.name).join(', ')
+    if (anime.genres && anime.genres.length)
+        generos.textContent = anime.genres.map(g => g.name).join(', ')
+    else
+        generos.textContent = 'Desconhecido'
     generosText.append('Gêneros: ', generos)
 
     const temasText = document.createElement('p')
     const temas = document.createElement('span')
-    temas.textContent = anime.themes.map(t => t.name).join(', ')
+    if (anime.themes && anime.themes.length)
+        temas.textContent = anime.themes.map(t => t.name).join(', ')
+    else
+        temas.textContent = 'Desconhecido'
     temasText.append('Temas: ', temas)
 
     const publicoAlvoText = document.createElement('p')
     const publicoAlvo = document.createElement('span')
-    publicoAlvo.textContent = anime.demographics.map(p => p.name).join(', ')
+    if (anime.demographics && anime.demographics.length)
+        publicoAlvo.textContent = anime.demographics.map(p => p.name).join(', ')
+    else
+        publicoAlvo.textContent = 'Desconhecido'
     publicoAlvoText.append('Público-alvo: ', publicoAlvo)
 
     const estudioText = document.createElement('p')
     const estudio = document.createElement('span')
-    estudio.textContent = anime.studios.map(e => e.name).join(' | ')
+    if (anime.studios && anime.studios.length)
+        estudio.textContent = anime.studios.map(e => e.name).join(' | ')
+    else
+        estudio.textContent = 'Desconhecido'
     estudioText.append('Estúdio: ', estudio)
 
     const linkMyAnimeList = document.createElement('a')
-    linkMyAnimeList.textContent = 'MyAnimeList'
-    linkMyAnimeList.href = anime.url
+    if (anime.url) {
+        linkMyAnimeList.textContent = 'MyAnimeList'
+        linkMyAnimeList.href = anime.url
+    }
 
     informacoesContainer.append(informacoes, tipoText, fonteText, episodiosText, duracaoText, statusText,
         lancamentoText, generosText, temasText, publicoAlvoText, estudioText, linkMyAnimeList)
@@ -169,7 +222,10 @@ function criarAnime(anime) {
     sinopse.textContent = 'Sinopse'
 
     const sinopseContent = document.createElement('p')
-    sinopseContent.textContent = anime.synopsis
+    if (anime.synopsis)
+        sinopseContent.textContent = anime.synopsis
+    else
+        sinopseContent.textContent = 'Não fornecido.'
 
     sinopseContainer.append(sinopse, sinopseContent)
 
@@ -180,7 +236,10 @@ function criarAnime(anime) {
     informacoesAdicionais.textContent = 'Informações adicionais'
 
     const informacoesAdicionaisContent = document.createElement('p')
-    informacoesAdicionaisContent.textContent = anime.background
+    if (anime.background)
+        informacoesAdicionaisContent.textContent = anime.background
+    else
+        informacoesAdicionaisContent.textContent = 'Não fornecido.'
 
     informacoesAdicionaisContainer.append(informacoesAdicionais, informacoesAdicionaisContent)
 
@@ -195,4 +254,4 @@ async function exibirConteudo(id) {
     criarAnime(data.data)
 }
 
-exibirConteudo(52991)
+exibirConteudo(sessionStorage.getItem('animeId'))

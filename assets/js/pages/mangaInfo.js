@@ -196,4 +196,4 @@ async function exibirConteudo(id) {
     criarManga(data.data)
 }
 
-exibirConteudo(2)
+exibirConteudo(sessionStorage.getItem('mangaId'))

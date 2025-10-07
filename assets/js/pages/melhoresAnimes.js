@@ -4,11 +4,12 @@ import { iniciarMenu } from '../components/menu.js'
 import { obterConteudo } from '../utils/fetchData.js'
 import { ordenarPorRankCrescente } from '../utils/sort.js'
 import { criarHeader } from '../components/header.js'
+import { mostrarMaisInformacoesAnime } from "../utils/mostrarMaisInformacoes.js"
 
 criarHeader()
 iniciarMenu()
 
-async function criarCards(data) {
+function criarCards(data) {
     const animes = data.sort(ordenarPorRankCrescente)
 
     const cards = document.getElementById('cards')
@@ -26,6 +27,9 @@ async function criarCards(data) {
         const anime = animes[i]
         const card = document.createElement('div')
         card.className = 'card'
+        card.addEventListener('click', () => {
+            mostrarMaisInformacoesAnime(anime.mal_id)
+        })
 
         const imagem = document.createElement('img')
         imagem.className = 'capa'
