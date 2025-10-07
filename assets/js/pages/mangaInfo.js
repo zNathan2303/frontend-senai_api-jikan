@@ -17,7 +17,10 @@ const traducaoStatus = {
 
 function criarManga(manga) {
     const tituloManga = document.getElementById('manga-titulo')
-    tituloManga.textContent = manga.title
+    if (manga.title)
+        tituloManga.textContent = manga.title
+    else
+        tituloManga.textContent = 'Título indisponível'
 
     const container = document.getElementById('container')
 
@@ -34,28 +37,43 @@ function criarManga(manga) {
     notaText.textContent = 'Nota'
 
     const nota = document.createElement('p')
-    nota.textContent = manga.score
+    if (manga.score)
+        nota.textContent = manga.score
+    else
+        nota.textContent = '???'
 
     notaContainer.append(notaText, nota)
 
     const votosText = document.createElement('p')
     const votos = document.createElement('span')
-    votos.textContent = manga.scored_by.toLocaleString('pt-BR')
+    if (manga.scored_by)
+        votos.textContent = manga.scored_by.toLocaleString('pt-BR')
+    else
+        votos.textContent = '???'
     votosText.append(votos, ' votos')
 
     const rankText = document.createElement('p')
     const rank = document.createElement('span')
-    rank.textContent = '#' + manga.rank
+    if (manga.rank)
+        rank.textContent = '#' + manga.rank
+    else
+        rank.textContent = '???'
     rankText.append('Rank ', rank)
 
     const popularidadeText = document.createElement('p')
     const popularidade = document.createElement('span')
-    popularidade.textContent = '#' + manga.popularity
+    if (manga.popularity)
+        popularidade.textContent = '#' + manga.popularity
+    else
+        popularidade.textContent = '???'
     popularidadeText.append('Popularidade ', popularidade)
 
     const membrosText = document.createElement('p')
     const membros = document.createElement('span')
-    membros.textContent = manga.members.toLocaleString('pt-BR')
+    if (manga.members)
+        membros.textContent = manga.members.toLocaleString('pt-BR')
+    else
+        membros.textContent = '???'
     membrosText.append(membros, ' membros')
 
     const linhaDivisoriaPopularidade = document.createElement('div')
@@ -71,12 +89,18 @@ function criarManga(manga) {
 
     const tituloInglesText = document.createElement('p')
     const tituloIngles = document.createElement('span')
-    tituloIngles.textContent = manga.title_english
+    if (manga.title_english)
+        tituloIngles.textContent = manga.title_english
+    else
+        tituloIngles.textContent = 'Desconhecido'
     tituloInglesText.append('Inglês: ', tituloIngles)
 
     const tituloJaponesText = document.createElement('p')
     const tituloJapones = document.createElement('span')
-    tituloJapones.textContent = manga.title_japanese
+    if (manga.title_japanese)
+        tituloJapones.textContent = manga.title_japanese
+    else
+        tituloJapones.textContent = 'Desconhecido'
     tituloJaponesText.append('Japonês: ', tituloJapones)
 
     titulosContainer.append(titulos, tituloInglesText, tituloJaponesText)
@@ -89,7 +113,10 @@ function criarManga(manga) {
 
     const tipoText = document.createElement('p')
     const tipo = document.createElement('span')
-    tipo.textContent = manga.type
+    if (manga.type)
+        tipo.textContent = manga.type
+    else
+        tipo.textContent = 'Desconhecido'
     tipoText.append('Tipo: ', tipo)
 
     const capitulosText = document.createElement('p')
@@ -138,27 +165,41 @@ function criarManga(manga) {
 
     const generosText = document.createElement('p')
     const generos = document.createElement('span')
-    generos.textContent = manga.genres.map(g => g.name).join(', ')
+    if (manga.genres && manga.genres.length)
+        generos.textContent = manga.genres.map(g => g.name).join(', ')
+    else
+        generos.textContent = 'Desconhecido'
     generosText.append('Gêneros: ', generos)
 
     const temasText = document.createElement('p')
     const temas = document.createElement('span')
-    temas.textContent = manga.themes.map(t => t.name).join(', ')
+    if (manga.themes && manga.themes.length)
+        temas.textContent = manga.themes.map(t => t.name).join(', ')
+    else
+        temas.textContent = 'Desconhecido'
     temasText.append('Temas: ', temas)
 
     const publicoAlvoText = document.createElement('p')
     const publicoAlvo = document.createElement('span')
-    publicoAlvo.textContent = manga.demographics.map(p => p.name).join(', ')
+    if (manga.demographics && manga.demographics.length)
+        publicoAlvo.textContent = manga.demographics.map(p => p.name).join(', ')
+    else
+        publicoAlvo.textContent = 'Desconhecido'
     publicoAlvoText.append('Público-alvo: ', publicoAlvo)
 
     const autoresText = document.createElement('p')
     const autores = document.createElement('span')
-    autores.textContent = manga.authors.map(autor => autor.name).join(' | ')
+    if (manga.authors && manga.authors.length)
+        autores.textContent = manga.authors.map(autor => autor.name).join(' | ')
+    else
+        autores.textContent = 'Desconhecido'
     autoresText.append('Autores: ', autores)
 
     const linkMyAnimeList = document.createElement('a')
-    linkMyAnimeList.textContent = 'MyAnimeList'
-    linkMyAnimeList.href = manga.url
+    if (manga.url) {
+        linkMyAnimeList.textContent = 'MyAnimeList'
+        linkMyAnimeList.href = manga.url
+    }
 
     informacoesContainer.append(informacoes, tipoText, capitulosText, volumesText, statusText,
         publicacaoText, generosText, temasText, publicoAlvoText, autoresText, linkMyAnimeList)
@@ -170,7 +211,10 @@ function criarManga(manga) {
     sinopse.textContent = 'Sinopse'
 
     const sinopseContent = document.createElement('p')
-    sinopseContent.textContent = manga.synopsis
+    if (manga.synopsis)
+        sinopseContent.textContent = manga.synopsis
+    else
+        sinopseContent.textContent = 'Não fornecido.'
 
     sinopseContainer.append(sinopse, sinopseContent)
 
@@ -181,7 +225,10 @@ function criarManga(manga) {
     informacoesAdicionais.textContent = 'Informações adicionais'
 
     const informacoesAdicionaisContent = document.createElement('p')
-    informacoesAdicionaisContent.textContent = manga.background
+    if (manga.background)
+        informacoesAdicionaisContent.textContent = manga.background
+    else
+        informacoesAdicionaisContent.textContent = 'Não fornecido.'
 
     informacoesAdicionaisContainer.append(informacoesAdicionais, informacoesAdicionaisContent)
 
