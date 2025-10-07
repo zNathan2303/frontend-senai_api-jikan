@@ -1,3 +1,5 @@
+import { mostrarInformacoesAnimeAleatorio, mostrarInformacoesMangaAleatorio } from "../utils/mostrarMaisInformacoes.js"
+
 export function criarHeader() {
     const header = document.querySelector('header')
 
@@ -48,6 +50,9 @@ export function criarHeader() {
 
     const linkAleatorioAnime = document.createElement('a')
     linkAleatorioAnime.textContent = 'Aleatório'
+    linkAleatorioAnime.addEventListener('click', () => {
+        mostrarInformacoesAnimeAleatorio()
+    })
 
     const linkMelhoresAnime = document.createElement('a')
     linkMelhoresAnime.href = './melhores-animes.html'
@@ -75,6 +80,9 @@ export function criarHeader() {
 
     const linkAleatorioManga = document.createElement('a')
     linkAleatorioManga.textContent = 'Aleatório'
+    linkAleatorioManga.addEventListener('click', () => {
+        mostrarInformacoesMangaAleatorio()
+    })
 
     const linkMelhoresManga = document.createElement('a')
     linkMelhoresManga.href = './melhores-mangas.html'
