@@ -14,8 +14,13 @@ export function mostrarMaisInformacoesManga(id) {
 
 export async function mostrarInformacoesAnimeAleatorio() {
     const animeAleatorio = await obterConteudo('https://api.jikan.moe/v4/random/anime?sfw')
-    sessionStorage.setItem('animeId', parseInt(animeAleatorio.data.mal_id))
-    window.location.href = 'anime-info.html'
+    const tipo = animeAleatorio.data.type
+    if (tipo == 'Music' || tipo == 'CM' || tipo == 'PV') {
+        mostrarInformacoesAnimeAleatorio()
+    } else {
+        sessionStorage.setItem('animeId', parseInt(animeAleatorio.data.mal_id))
+        window.location.href = 'anime-info.html'
+    }
 }
 
 export async function mostrarInformacoesMangaAleatorio() {

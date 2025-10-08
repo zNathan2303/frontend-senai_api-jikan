@@ -352,6 +352,7 @@ h2 {
         gap: 5px;
         width: 100%;
         grid-area: informacoes;
+        background-color: #FAFAFA;
     }
 
     h2 {

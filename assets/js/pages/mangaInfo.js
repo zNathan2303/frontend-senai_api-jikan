@@ -3,6 +3,7 @@
 import { iniciarMenu } from '../components/menu.js'
 import { obterConteudo } from '../utils/fetchData.js'
 import { criarHeader } from '../components/header.js'
+import { formatarDataParaPadraoBrasileiro } from '../utils/formatoData.js'
 
 criarHeader()
 iniciarMenu()
@@ -38,7 +39,7 @@ function criarManga(manga) {
 
     const nota = document.createElement('p')
     if (manga.score)
-        nota.textContent = manga.score
+        nota.textContent = manga.score.toFixed(2)
     else
         nota.textContent = '???'
 
@@ -121,19 +122,24 @@ function criarManga(manga) {
 
     const capitulosText = document.createElement('p')
     const capitulos = document.createElement('span')
-    if (manga.chapters)
+    if (manga.chapters) {
         capitulos.textContent = manga.chapters
-    else
+    } else {
         capitulos.textContent = 'Em lançamento'
+        if (manga.status == 'Finished')
+            capitulos.textContent = 'Desconhecido'
+    }
     capitulosText.append('Capítulos: ', capitulos)
 
     const volumesText = document.createElement('p')
     const volumes = document.createElement('span')
-    if (manga.volumes)
+    if (manga.volumes) {
         volumes.textContent = manga.volumes
-    else
+    } else {
         volumes.textContent = 'Em lançamento'
-
+        if (manga.status == 'Finished')
+            volumes.textContent = 'Desconhecido'
+    }
     volumesText.append('Volumes: ', volumes)
 
     const statusText = document.createElement('p')
@@ -153,13 +159,18 @@ function criarManga(manga) {
         if (anoFim) {
             const diaFim = manga.published.prop.to.day
             const mesFim = manga.published.prop.to.month
-            publicacao.textContent = `${diaInicio}/${mesInicio}/${anoInicio} até ${diaFim}/${mesFim}/${anoFim}`
+            publicacao.textContent =
+                `${formatarDataParaPadraoBrasileiro(diaInicio, mesInicio, anoInicio)} até 
+                ${formatarDataParaPadraoBrasileiro(diaFim, mesFim, anoFim)}`
         } else {
-            publicacao.textContent = `${diaInicio}/${mesInicio}/${anoInicio} até o momento`
+            publicacao.textContent = `${formatarDataParaPadraoBrasileiro(diaInicio, mesInicio, anoInicio)} até o momento`
+            if (manga.status == 'Finished')
+                publicacao.textContent = formatarDataParaPadraoBrasileiro(diaInicio, mesInicio, anoInicio)
         }
     } else {
         publicacao.textContent = `Não iniciada`
     }
+
 
     publicacaoText.append('Publicação: ', publicacao)
 

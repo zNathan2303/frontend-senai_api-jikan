@@ -57,7 +57,7 @@ function criarCards(data) {
 
         const nota = document.createElement('p')
         nota.className = 'nota'
-        nota.textContent = anime.score
+        nota.textContent = anime.score.toFixed(2)
 
         const titulo = document.createElement('p')
         titulo.className = 'titulo'

@@ -3,6 +3,7 @@
 import { iniciarMenu } from '../components/menu.js'
 import { obterConteudo } from '../utils/fetchData.js'
 import { criarHeader } from '../components/header.js'
+import { formatarDataParaPadraoBrasileiro } from '../utils/formatoData.js'
 
 criarHeader()
 iniciarMenu()
@@ -39,7 +40,7 @@ function criarAnime(anime) {
 
     const nota = document.createElement('p')
     if (anime.score)
-        nota.textContent = anime.score
+        nota.textContent = anime.score.toFixed(2)
     else
         nota.textContent = '???'
 
@@ -164,9 +165,11 @@ function criarAnime(anime) {
         if (anoFim) {
             const diaFim = anime.aired.prop.to.day
             const mesFim = anime.aired.prop.to.month
-            lancamento.textContent = `${diaInicio}/${mesInicio}/${anoInicio} até ${diaFim}/${mesFim}/${anoFim}`
+            lancamento.textContent =
+                `${formatarDataParaPadraoBrasileiro(diaInicio, mesInicio, anoInicio)} até 
+                ${formatarDataParaPadraoBrasileiro(diaFim, mesFim, anoFim)}`
         } else {
-            lancamento.textContent = `${diaInicio}/${mesInicio}/${anoInicio}`
+            lancamento.textContent = formatarDataParaPadraoBrasileiro(diaInicio, mesInicio, anoInicio)
         }
     } else {
         lancamento.textContent = `Desconhecido`

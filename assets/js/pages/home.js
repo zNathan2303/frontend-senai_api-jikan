@@ -8,7 +8,7 @@ import { mostrarMaisInformacoesAnime } from "../utils/mostrarMaisInformacoes.js"
 criarHeader()
 iniciarMenu()
 
-async function criarCards(secao, data) {
+function criarCards(secao, data) {
     const section = document.getElementById(secao)
 
     const cards = document.createElement('div')

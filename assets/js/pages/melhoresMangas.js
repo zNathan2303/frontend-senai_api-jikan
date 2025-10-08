@@ -5,6 +5,7 @@ import { obterConteudo } from '../utils/fetchData.js'
 import { ordenarPorRankCrescente } from '../utils/sort.js'
 import { criarHeader } from '../components/header.js'
 import { mostrarMaisInformacoesManga } from "../utils/mostrarMaisInformacoes.js"
+import { formatarDataParaPadraoBrasileiro } from '../utils/formatoData.js'
 
 criarHeader()
 iniciarMenu()
@@ -50,7 +51,7 @@ function criarCards(data) {
 
         const nota = document.createElement('p')
         nota.className = 'nota'
-        nota.textContent = manga.score
+        nota.textContent = manga.score.toFixed(2)
 
         const titulo = document.createElement('p')
         titulo.className = 'titulo'
@@ -84,9 +85,12 @@ function criarCards(data) {
         const anoFim = manga.published.prop.to.year
 
         if (anoFim)
-            publicacao.textContent = `${diaInicio}/${mesInicio}/${anoInicio} - ${diaFim}/${mesFim}/${anoFim}`
+            publicacao.textContent =
+                `${formatarDataParaPadraoBrasileiro(diaInicio, mesInicio, anoInicio)} - 
+                ${formatarDataParaPadraoBrasileiro(diaFim, mesFim, anoFim)}`
         else
-            publicacao.textContent = `${diaInicio}/${mesInicio}/${anoInicio} - atualmente`
+            publicacao.textContent =
+                `${formatarDataParaPadraoBrasileiro(diaInicio, mesInicio, anoInicio)} - atualmente`
 
         score.append(icon, nota)
         rankText.append(rank)
